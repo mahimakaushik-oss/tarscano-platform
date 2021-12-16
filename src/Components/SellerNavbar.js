@@ -5,8 +5,9 @@ import {Icon} from 'react-icons-kit'
 import {shoppingCart} from 'react-icons-kit/feather/shoppingCart'
 import {auth} from '../Config/Config'
 import {useHistory} from 'react-router-dom'
+import SellerHome from './SellerHome'
 
- export const Navbar = ({user,totalProducts}) => {
+ export const SellerNavbar = ({user,totalProducts}) => {
 
     const history = useHistory();
 
@@ -30,13 +31,13 @@ import {useHistory} from 'react-router-dom'
                     <input type="text" placeholder = "search"/>
                     </div>
             <div className='rightside'>
-            <div> <Link className="navlink1" to="/">Home</Link></div>
+            {/* <div> <Link className="navlink1" to="/">Home</Link></div> */}
             <div> <Link className="navlink1" to="aboutus">AboutUs</Link></div>
             <div>
             <div className="dropdown">
                                 <a className=" dropbtn">More</a>
                                     <div className="dropdown-content">
-                                        <Link to="sellerreg">Sell on Tarscano</Link>
+                                        {/* <Link to="sellerreg">Sell on Tarscano</Link> */}
                                         <a href="#">Advertise</a>
                                         <a href="#">contact us</a>
                                     </div>
@@ -50,12 +51,12 @@ import {useHistory} from 'react-router-dom'
 
                 {user&&<>
                     <div><Link className='navlink1' to="/">{user}</Link></div>
-                    <div className='cart-menu-btn'>
+                    {/* <div className='cart-menu-btn'>
                         <Link className='navlink1' to="cart">
                             <Icon icon={shoppingCart} size={20}/>
                         </Link>
                         <span className='cart-indicator'>{totalProducts}</span>
-                    </div>
+                    </div> */}
                     
                     <div className='logout'
                     onClick={handleLogout}>LOGOUT</div>
@@ -64,7 +65,7 @@ import {useHistory} from 'react-router-dom'
             </div>
         </div>
 
-        <Categorybar/>
+        {/* <Categorybar/> */}
         </>
 
     )
@@ -92,5 +93,4 @@ const Categorybar = () =>  {
             </div>
     );
 }
-
-export default Navbar;
+export default SellerNavbar;

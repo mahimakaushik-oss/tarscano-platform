@@ -7,9 +7,9 @@ export const AddProducts = () => {
     const [description, setDescription]=useState('');
     const [price, setPrice]=useState('');
     const [image, setImage]=useState(null);
-
+    const [productid, setProductId] = useState('');
     const [imageError, setImageError]=useState('');
-    
+    const[productseller, setProductSeller] = useState('');
     const [successMsg, setSuccessMsg]=useState('');
     const [uploadError, setUploadError]=useState('');
 
@@ -44,13 +44,17 @@ export const AddProducts = () => {
                 fs.collection('Products').add({
                     title,
                     description,
+                    productid,
+                    productseller,
                     price: Number(price),
                     url
                 }).then(()=>{
                     setSuccessMsg('Product added successfully');
                     setTitle('');
                     setDescription('');
+                    setProductId('');
                     setPrice('');
+                    setProductSeller('');
                     document.getElementById('file').value='';
                     setImageError('');
                     setUploadError('');
@@ -66,27 +70,35 @@ export const AddProducts = () => {
         <div className='container'>
             <br></br>
             <br></br>
-            <h1>Add Products</h1>
-            <hr></hr>        
+            {/* <h1 className='all-head'>Add Products</h1> */}
+            {/* <hr></hr>         */}
             {successMsg&&<>
                 <div className='success-msg'>{successMsg}</div>
                 <br></br>
             </>} 
-            <form autoComplete="off" className='form-group' onSubmit={handleAddProducts}>
-                <label>Product Title</label>
-                <input type="text" className='form-control' required
+            <form autoComplete="off" className='form-group add-product' onSubmit={handleAddProducts}>
+                {/* <label>Product Title</label> */}
+                <h2 className='add-pro-head'> Add Product</h2>
+                <hr></hr>
+                <input type="text" placeholder='Product Title' className='form-control' required
                 onChange={(e)=>setTitle(e.target.value)} value={title}></input>
                 <br></br>
-                <label>Product Description</label>
-                <input type="text" className='form-control' required
+                {/* <label>Product Description</label> */}
+                <input type="text" placeholder= 'Product Description' className='form-control' required
                 onChange={(e)=>setDescription(e.target.value)} value={description}></input>
                 <br></br>
-                <label>Product Price</label>
-                <input type="number" className='form-control' required
+                <input type="text" placeholder= 'Product Seller' className='form-control' required
+                onChange={(e)=>setProductSeller(e.target.value)} value={productseller}></input>
+                <br></br>
+                <input type="text" placeholder= 'Product ID' className='form-control' required
+                onChange={(e)=>setProductId(e.target.value)} value={productid}></input>
+                <br></br>
+                {/* <label>Product Price</label> */}
+                <input type="number" placeholder= 'Product Price' className='form-control' required
                 onChange={(e)=>setPrice(e.target.value)} value={price}></input>
                 <br></br>
                 <label>Upload Product Image</label>
-                <input type="file" id="file" className='form-control' required
+                <input type="file" id="file" placeholder ='Upload Product Image' className='form-control' required
                 onChange={handleProductImg}></input>
                 
                 {imageError&&<>
@@ -96,7 +108,7 @@ export const AddProducts = () => {
                 </>}
                 <br></br>           
                 <div style={{display:'flex', justifyContent:'flex-end'}}>
-                    <button type="submit" className='btn btn-success btn-md'>
+                    <button type="submit" className='btn btn-success btn-md sbmt-btn prod-btn'>
                         SUBMIT
                     </button>
                 </div>
