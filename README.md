@@ -1,3 +1,11 @@
+# Tarscano is an Ecommerce Application for Hyper-Local Shops and near-by customers.
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
